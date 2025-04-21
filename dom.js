@@ -1,0 +1,21 @@
+export const domElements = {
+    targetItemSelect: document.getElementById('target-item-select'),
+    targetQuantityInput: document.getElementById('target-quantity'),
+    calculateButton: document.getElementById('calculate-button'),
+    resultDisplay: document.getElementById('result-display'),
+    totalCostSpan: document.getElementById('total-cost'),
+    costPerItemSpan: document.getElementById('cost-per-item'),
+    costPerItemLabel: document.getElementById('cost-per-item-label'),
+    breakdownContainer: document.getElementById('breakdown-container'),
+    craftedItemsList: document.getElementById('crafted-items-list')?.querySelector('ul'),
+    baseItemsList: document.getElementById('base-items-list')?.querySelector('ul'),
+    toggleBreakdownButton: document.getElementById('toggle-breakdown-button'),
+    resourcePricesContainer: document.getElementById('resource-item-prices'),
+    savePricesButton: document.getElementById('save-prices-button'),
+    langToggleButton: document.getElementById('lang-toggle-button'),
+    craftedItemsTitleElement: document.getElementById('crafted-items-list')?.querySelector('h4'),
+    baseItemsTitleElement: document.getElementById('base-items-list')?.querySelector('h4'),
+    soupButtonContainer: document.querySelector('.soup-buttons-container'),
+    loadPricesButton: document.getElementById('load-prices-button'),
+};
+

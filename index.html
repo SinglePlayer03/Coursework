@@ -1,0 +1,82 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="pageTitle">Stalcraft X Крафт Калькулятор</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "./base-items.js": "./base-items.js",
+          "./component-recipes.js": "./component-recipes.js",
+          "./food-recipes.js": "./food-recipes.js"
+        }
+      }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header-content"> 
+            <h1 data-lang-key="mainHeading">Stalcraft X Крафт Калькулятор</h1>
+            <div class="lang-switcher-container"> 
+                <button id="lang-toggle-button">RU</button>
+            </div>
+        </div>
+
+        <div class="soup-buttons-container">
+            <button class="soup-button" data-itemid="чесночный_суп" title="Чесночный суп">
+                <img src="1.png" alt="Чесночный суп"> 
+            </button>
+            <button class="soup-button" data-itemid="солянка" title="Солянка">
+                <img src="2.png" alt="Солянка"> 
+            </button>
+             <button class="soup-button" data-itemid="гороховый_суп" title="Гороховый суп">
+                <img src="3.png" alt="Гороховый суп"> 
+            </button>
+        </div>
+
+        <div class="calculation-section">
+            <h2 data-lang-key="calcSectionTitle">Расчет стоимости крафта</h2>
+            <label for="target-item-select" data-lang-key="selectItemLabel">Выберите предмет:</label>
+            <select id="target-item-select">
+                <!-- Options will be populated by JS -->
+            </select>
+            <label for="target-quantity" data-lang-key="quantityLabel">Количество:</label>
+            <input type="number" id="target-quantity" value="1" min="1" data-lang-placeholder-key="quantityPlaceholder">
+            <button id="calculate-button" data-lang-key="calculateButton">Рассчитать</button>
+            <div id="result-display">
+                <p><span data-lang-key="totalCostLabel">Общая стоимость</span>: <span id="total-cost">0</span></p>
+                <p><span data-lang-key="costPerItemLabel" id="cost-per-item-label">Стоимость за 1 шт</span>: <span id="cost-per-item">0</span></p>
+                <button id="toggle-breakdown-button" style="display: none;" data-lang-key="toggleBreakdownButton">Показать детализацию</button>
+                <div id="breakdown-container" style="display: none;">
+                    <h3 data-lang-key="breakdownTitle">Детализация крафта:</h3>
+                    <div id="crafted-items-list">
+                        <h4 data-lang-key="craftedItemsTitle">Промежуточные компоненты (Крафт):</h4>
+                        <ul></ul>
+                    </div>
+                    <div id="base-items-list">
+                        <h4 data-lang-key="baseItemsTitle">Базовые ресурсы (Покупка/Сбор):</h4>
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="prices-section">
+            <div class="prices-header">
+                <h2 data-lang-key="pricesTitle">Цены ресурсов</h2>
+                <div class="price-buttons"> 
+                    <button id="load-prices-button" data-lang-key="loadPricesButton">Загрузить цены</button> 
+                    <button id="save-prices-button" data-lang-key="savePricesButton">Сохранить цены</button>
+                </div>
+            </div>
+            <p data-lang-key="pricesDescription">Введите текущие рыночные цены (за 1 шт).</p>
+            <div id="resource-item-prices">
+                <!-- Price inputs will be populated by JS into columns -->
+            </div>
+        </div>
+    </div>
+    <!-- Load main script which imports others -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>

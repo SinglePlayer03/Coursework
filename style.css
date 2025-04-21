@@ -1,0 +1,555 @@
+* {
+    box-sizing: border-box; /* Add box-sizing for easier layout management */
+}
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #282c34;
+    color: #abb2bf;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: #3c4049;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid #4a4e5a;
+}
+
+h1, h2 {
+    color: #61afef;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h2 {
+     border-bottom: 1px solid #4a4e5a;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Keep some space below the header */
+    border-bottom: 1px solid #4a4e5a; /* Add border to the wrapper */
+    padding-bottom: 10px; /* Add padding for the border */
+}
+
+.header-content h1 {
+    margin-bottom: 0; /* Remove margin from h1 inside flex */
+    border-bottom: none; /* Ensure no border on h1 itself */
+    padding-bottom: 0; /* Remove padding from h1 */
+}
+
+.header-content .lang-switcher-container {
+    margin-bottom: 0; /* Align button vertically */
+}
+
+/* Adjusted styles for H3 within sections */
+.calculation-section h3,
+.data-section h3 {
+    color: #c678dd; /* Purple color for H3 */
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.calculation-section, .prices-section, .data-section {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #353941;
+    border: 1px solid #4a4e5a;
+    border-radius: 5px;
+}
+
+.prices-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.prices-header h2 {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.price-buttons {
+    display: flex;
+    gap: 10px; /* Space between load/save buttons */
+}
+
+label {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #c8ccd4;
+}
+
+input[type="number"], select {
+    padding: 8px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #4a4e5a;
+    background-color: #2c313a;
+    color: #abb2bf;
+    border-radius: 4px;
+    min-width: 80px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #61afef;
+    color: #282c34;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #528dce;
+}
+
+#save-prices-button {
+    background-color: #e5c07b; /* Yellow */
+    color: #282c34;
+    font-size: 0.9em;
+    padding: 8px 12px;
+}
+
+#save-prices-button:hover {
+    background-color: #d1ae6c;
+}
+
+#load-prices-button {
+    background-color: #56b6c2; /* Teal */
+    color: #282c34;
+    font-size: 0.9em;
+    padding: 8px 12px;
+}
+
+#load-prices-button:hover {
+    background-color: #489ca7;
+}
+
+#result-display {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #353941;
+    border: 1px solid #4a4e5a;
+    border-radius: 5px;
+}
+
+#result-display p {
+    margin: 5px 0;
+    font-size: 1.1em;
+    word-wrap: break-word;
+}
+
+#total-cost, #cost-per-item {
+    font-weight: bold;
+    color: #98c379;
+}
+
+#cost-per-item-label {
+    color: #c8ccd4;
+}
+
+#breakdown-container {
+    display: none;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed #565a65;
+    font-size: 0.9em;
+}
+
+#breakdown-container h3,
+#breakdown-container h4 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #61afef;
+}
+
+#breakdown-container ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 0;
+}
+
+#breakdown-container li {
+    margin-bottom: 4px;
+}
+
+#toggle-breakdown-button {
+    padding: 6px 10px;
+    background-color: #56b6c2;
+    color: #282c34;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin: 10px 0;
+    display: none;
+}
+
+#toggle-breakdown-button:hover {
+    background-color: #489ca7;
+}
+
+.lang-switcher-container {
+    margin-bottom: 0; /* Align button vertically */
+}
+
+#lang-toggle-button {
+    padding: 5px 10px;
+    background-color: #282c34;
+    color: #abb2bf;
+    border: 1px solid #4a4e5a;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    min-width: 40px;
+    text-align: center;
+}
+
+#lang-toggle-button:hover {
+    background-color: #353941;
+    border-color: #565a65;
+}
+
+/* Styles for price resource container and columns */
+#resource-item-prices {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.price-column-wrapper {
+    flex: 1;
+    min-width: 300px; /* Ensure columns don't get too narrow */
+    display: flex;
+    flex-direction: column;
+}
+
+.prices-section .price-column-title { 
+    color: #61afef; /* Ensure color is the blue used for H1/H2 */
+    margin-bottom: 10px; /* Space below title */
+    border-bottom: 1px solid #4a4e5a; /* Optional separator */
+    padding-bottom: 5px; /* Padding for separator */
+    font-weight: bold;
+}
+
+.price-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Removed flex: 1 and min-width from here, it's on the wrapper now */
+}
+
+.price-input-group {
+    display: flex;
+    align-items: center;
+    background-color: #3c4049;
+    padding: 5px 8px;
+    border: 1px solid #4a4e5a;
+    border-radius: 4px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    border-left-width: 5px;
+    border-left-color: transparent;
+    gap: 8px;
+}
+
+.price-input-group.missing-price { /* Base item missing price is still Red */
+    border-left-color: #e06c75; /* KEEP Red for missing base price */
+}
+
+.price-input-group.cheaper-to-craft {
+    border-left-color: #e06c75; /* SWAPPED to Red */
+}
+
+.price-input-group.cheaper-to-buy {
+    border-left-color: #98c379; /* SWAPPED to Green */
+}
+
+.price-input-group.non-craftable {
+    /* Removed specific non-craftable color, relying on missing-price now */
+    /* border-left-color: #6c757d; */
+}
+
+.price-input-group label {
+    flex-basis: auto;
+    flex-shrink: 0;
+    margin-bottom: 0;
+    margin-right: 8px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    font-size: 0.9em;
+    color: #c8ccd4;
+    flex-grow: 0;
+    flex-basis: 120px;
+    text-align: left;
+}
+
+.price-input-group input {
+    flex-grow: 1;
+    margin-bottom: 0;
+    margin-right: 0;
+    min-width: 80px;
+    font-size: 0.9em;
+    padding: 6px 8px;
+    flex-basis: 100px;
+}
+
+.price-input-group input::placeholder {
+    color: #6c757d;
+    opacity: 1;
+    font-size: 0.9em;
+}
+
+.soup-buttons-container {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    gap: 15px; /* Space between buttons */
+    margin-bottom: 25px; /* Space below the buttons */
+    padding: 10px 0;
+    border-bottom: 1px solid #4a4e5a;
+}
+
+.soup-button {
+    background-color: #3c4049;
+    border: 2px solid #565a65;
+    border-radius: 8px;
+    padding: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    width: 80px; /* Fixed width */
+    height: 80px; /* Fixed height */
+    display: flex; /* Center image inside */
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Hide parts of image that overflow */
+}
+
+.soup-button img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Scale image nicely */
+    border-radius: 4px; /* Slightly rounded corners for the image */
+    pointer-events: none; /* Ensure button click registers, not image */
+}
+
+.soup-button:hover {
+    transform: scale(1.05);
+    border-color: #61afef;
+}
+
+.soup-button:active {
+    transform: scale(0.98);
+}
+
+pre {
+    background-color: #2c313a;
+    color: #abb2bf;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #4a4e5a;
+    font-size: 0.9em;
+}
+
+#save-prices-button.success {
+    background-color: #98c379 !important;
+    color: #282c34 !important;
+}
+
+#save-prices-button.error {
+    background-color: #e06c75 !important;
+    color: #282c34 !important;
+}
+
+#load-prices-button.success {
+    background-color: #98c379 !important; /* Green */
+    color: #282c34 !important;
+}
+
+#load-prices-button.error {
+    background-color: #e06c75 !important; /* Red */
+    color: #282c34 !important;
+}
+
+.breakdown-item-button {
+    background-color: #4a4e5a;
+    color: #abb2bf;
+    border: 1px solid #565a65;
+    border-radius: 4px;
+    padding: 3px 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-right: 5px;
+    display: inline;
+    text-align: left;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    vertical-align: baseline;
+    /* Allow wrapping if needed */
+    white-space: normal;
+    line-height: 1.3; /* Adjust line height if wrapping occurs */
+    max-width: calc(100% - 10px); /* Prevent overflow */
+}
+
+.breakdown-item-button:hover {
+    background-color: #565a65;
+    border-color: #61afef;
+}
+
+.breakdown-item-details {
+    font-size: 0.9em;
+}
+
+#breakdown-container li.base-item {
+    font-size: 0.9em;
+}
+
+@media (max-width: 767px) {
+    body {
+        margin: 10px;
+        font-size: 15px;
+    }
+
+    .container {
+        padding: 15px;
+        margin: 0;
+        max-width: 100%;
+    }
+
+    /* Adjust header for mobile */
+    .header-content {
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+    }
+
+    h1 {
+        font-size: 1.4em; /* Slightly smaller h1 on mobile */
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    .calculation-section label,
+    .calculation-section input[type="number"],
+    .calculation-section select,
+    .calculation-section button {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 12px;
+    }
+
+    .calculation-section label {
+        margin-bottom: 4px;
+    }
+
+    .soup-buttons-container {
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+    }
+
+    .soup-button {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* Prices section adjustments for mobile */
+    #resource-item-prices {
+        flex-direction: column;
+        gap: 15px; /* Add gap between column wrappers */
+    }
+
+    .price-column-wrapper {
+        min-width: 100%; /* Full width for each column wrapper */
+        margin-bottom: 0; /* Remove bottom margin from column */
+    }
+
+    .price-column-title {
+        font-size: 1.2em; /* Adjust title size */
+    }
+
+    .price-column {
+        gap: 8px; /* Adjust gap between input groups */
+    }
+
+    .price-input-group {
+        flex-wrap: wrap;
+        gap: 5px;
+        padding: 8px;
+    }
+
+    .price-input-group label {
+        flex-basis: 100%;
+        margin-right: 0;
+        margin-bottom: 3px;
+        min-width: unset;
+        text-align: left;
+    }
+
+    .price-input-group input {
+        flex-basis: 100%;
+        min-width: unset;
+    }
+
+    #result-display {
+        padding: 10px;
+    }
+
+    #result-display p {
+        font-size: 1em;
+    }
+
+    pre {
+        padding: 10px;
+        font-size: 0.85em;
+    }
+
+    #lang-toggle-button {
+        padding: 4px 8px;
+        font-size: 0.8em;
+    }
+
+    #breakdown-container li {
+        word-wrap: break-word;
+    }
+
+    .breakdown-item-button {
+        white-space: normal;
+        line-height: 1.3;
+        text-align: left;
+        vertical-align: top;
+    }
+}
